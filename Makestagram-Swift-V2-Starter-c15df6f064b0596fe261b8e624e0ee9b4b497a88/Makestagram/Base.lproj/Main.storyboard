@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Time Line View Controller-->
+        <!--Photo View Controller-->
         <scene sceneID="uZR-tl-2wN">
             <objects>
-                <viewController id="jvw-Vc-BMl" customClass="TimeLineViewController" customModule="Makestagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jvw-Vc-BMl" customClass="PhotoViewController" customModule="Makestagram" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H1S-8A-uQu"/>
                         <viewControllerLayoutGuide type="bottom" id="sdk-eG-jVs"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Home" id="6vt-mF-BPx">
+                    <tabBarItem key="tabBarItem" title="" image="Camera" id="6vt-mF-BPx">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                 </viewController>
@@ -29,7 +29,7 @@
         <!--Friend Search View Controller-->
         <scene sceneID="mDL-wX-tWG">
             <objects>
-                <viewController id="dac-yj-zW6" customClass="FriendSearchViewController" sceneMemberID="viewController">
+                <viewController id="dac-yj-zW6" customClass="FriendSearchViewController" customModule="MakestagramTests" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fud-Pn-Rtk"/>
                         <viewControllerLayoutGuide type="bottom" id="W0T-ZE-LOF"/>
@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="385" y="1175"/>
         </scene>
-        <!--Photo View Controller-->
+        <!--Time Line View Controller-->
         <scene sceneID="x8B-Ih-0Mq">
             <objects>
-                <viewController id="SfZ-p7-tfr" customClass="PhotoViewController" customModule="Makestagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SfZ-p7-tfr" customClass="TimeLineViewController" customModule="Makestagram" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zWW-84-SDB"/>
                         <viewControllerLayoutGuide type="bottom" id="J4Z-Rb-RZ4"/>
@@ -60,7 +60,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Camera" id="yS6-oc-NhB">
+                    <tabBarItem key="tabBarItem" title="" image="Home" id="yS6-oc-NhB">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                 </viewController>
@@ -85,7 +85,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YtQ-fn-oyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-647" y="-21"/>
+            <point key="canvasLocation" x="-667" y="-33"/>
         </scene>
     </scenes>
     <resources>

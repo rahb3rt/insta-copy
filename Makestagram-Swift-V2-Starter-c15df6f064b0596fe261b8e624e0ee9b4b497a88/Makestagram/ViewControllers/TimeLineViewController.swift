@@ -1,35 +1,28 @@
-//
-//  TimeLineViewController.swift
-//  Makestagram
-//
-//  Created by Robert Davis on 7/25/16.
-//  Copyright © 2016 Make School. All rights reserved.
-//
-
 import UIKit
 
 class TimeLineViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        self.tabBarController?.delegate = self
     }
     
+}
 
-    /*
-    // MARK: - Navigation
+// MARK: Tab Bar Delegate
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension TimeLineViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        
+        if (viewController is PhotoViewController) {
+            
+            print("Take Photo")
+            return false
+        } else {
+            return true
+        }
     }
-    */
-
+    
 }
