@@ -39,13 +39,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
           
             return true
+            
         }
+    
+        let acl = PFACL()
+        acl.setReadAccess(true, forRoleWithName: "everyone")
+        acl.setWriteAccess(true, forRoleWithName: "everyone")
+    
         return false
     }
 
 
-
-    //return true
+  
 }
 
   func applicationWillResignActive(application: UIApplication) {
