@@ -13,16 +13,17 @@ class TimeLineViewController: UIViewController {
         
             }
     
+    
     func takePhoto() {
 
-            photoTakingHelper = PhotoTakingHelper(viewController: self.tabBarController!, callback: { (image: UIImage?) in
-               
-                
-                 print("recieved a callback")
-                            })
+        photoTakingHelper = PhotoTakingHelper(viewController: self.tabBarController!, callback: { (image: UIImage?) in
+            let post = Post()
+            post.image = image
+            post.uploadPost()
+            
+        })
     }
 }
-
 
 
 

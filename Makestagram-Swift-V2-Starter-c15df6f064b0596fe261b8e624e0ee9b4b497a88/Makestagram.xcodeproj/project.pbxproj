@@ -37,6 +37,8 @@
 		62C8C1FC1B06BD6500DC3EA7 /* MakestagramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8C1FB1B06BD6500DC3EA7 /* MakestagramTests.swift */; };
 		E10B5F851D46E2CB00175033 /* PhototakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B5F841D46E2CB00175033 /* PhototakingHelper.swift */; };
 		E10B5F861D46E2CB00175033 /* PhototakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B5F841D46E2CB00175033 /* PhototakingHelper.swift */; };
+		E10B5F891D46FE7C00175033 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B5F881D46FE7C00175033 /* Post.swift */; };
+		E10B5F8A1D46FE7C00175033 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B5F881D46FE7C00175033 /* Post.swift */; };
 		E1520C7B1D4697BE00F9C72D /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1520C751D4697BE00F9C72D /* ParseTwitterUtils.framework */; };
 		E1520C7C1D4697BE00F9C72D /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1520C761D4697BE00F9C72D /* ParseUI.framework */; };
 		E1520C7D1D46980500F9C72D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1520C711D4697BE00F9C72D /* Bolts.framework */; };
@@ -191,6 +193,7 @@
 		62C8C1FA1B06BD6500DC3EA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62C8C1FB1B06BD6500DC3EA7 /* MakestagramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakestagramTests.swift; sourceTree = "<group>"; };
 		E10B5F841D46E2CB00175033 /* PhototakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhototakingHelper.swift; sourceTree = "<group>"; };
+		E10B5F881D46FE7C00175033 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E1520C711D4697BE00F9C72D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../Bolts.framework; sourceTree = "<group>"; };
 		E1520C721D4697BE00F9C72D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse.framework; sourceTree = "<group>"; };
 		E1520C731D4697BE00F9C72D /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = ../ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -371,6 +374,7 @@
 		62C8C1E21B06BD6500DC3EA7 /* Makestagram */ = {
 			isa = PBXGroup;
 			children = (
+				E10B5F871D46FE6200175033 /* Models */,
 				E10B5F7D1D46E26900175033 /* PhotoTaking */,
 				6277189C1B0A58E800AF5C6E /* Helpers */,
 				627718811B0A581600AF5C6E /* ViewControllers */,
@@ -415,6 +419,14 @@
 				E10B5F841D46E2CB00175033 /* PhototakingHelper.swift */,
 			);
 			path = PhotoTaking;
+			sourceTree = "<group>";
+		};
+		E10B5F871D46FE6200175033 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E10B5F881D46FE7C00175033 /* Post.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -599,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				627718901B0A581600AF5C6E /* Filter.swift in Sources */,
+				E10B5F891D46FE7C00175033 /* Post.swift in Sources */,
 				E1E11A8C1D46AD030084CFC9 /* FriendSearchViewController.swift in Sources */,
 				627718A01B0A58E800AF5C6E /* ParseLoginHelper.swift in Sources */,
 				E1E11A831D46ABD80084CFC9 /* TimeLineViewController.swift in Sources */,
@@ -618,6 +631,7 @@
 				E1E11A8D1D46AD030084CFC9 /* FriendSearchViewController.swift in Sources */,
 				62C8C1FC1B06BD6500DC3EA7 /* MakestagramTests.swift in Sources */,
 				E1E11A841D46ABD80084CFC9 /* TimeLineViewController.swift in Sources */,
+				E10B5F8A1D46FE7C00175033 /* Post.swift in Sources */,
 				E10B5F861D46E2CB00175033 /* PhototakingHelper.swift in Sources */,
 				E1E11A871D46ABED0084CFC9 /* PhotoViewController.swift in Sources */,
 			);
