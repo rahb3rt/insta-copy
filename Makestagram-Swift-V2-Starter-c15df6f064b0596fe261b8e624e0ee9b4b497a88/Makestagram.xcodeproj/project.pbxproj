@@ -39,6 +39,8 @@
 		E10B5F861D46E2CB00175033 /* PhototakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B5F841D46E2CB00175033 /* PhototakingHelper.swift */; };
 		E10B5F891D46FE7C00175033 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B5F881D46FE7C00175033 /* Post.swift */; };
 		E10B5F8A1D46FE7C00175033 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B5F881D46FE7C00175033 /* Post.swift */; };
+		E10B5F8F1D484F6B00175033 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B5F8E1D484F6B00175033 /* PostTableViewCell.swift */; };
+		E10B5F901D484F6B00175033 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B5F8E1D484F6B00175033 /* PostTableViewCell.swift */; };
 		E1520C7B1D4697BE00F9C72D /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1520C751D4697BE00F9C72D /* ParseTwitterUtils.framework */; };
 		E1520C7C1D4697BE00F9C72D /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1520C761D4697BE00F9C72D /* ParseUI.framework */; };
 		E1520C7D1D46980500F9C72D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1520C711D4697BE00F9C72D /* Bolts.framework */; };
@@ -194,6 +196,7 @@
 		62C8C1FB1B06BD6500DC3EA7 /* MakestagramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakestagramTests.swift; sourceTree = "<group>"; };
 		E10B5F841D46E2CB00175033 /* PhototakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhototakingHelper.swift; sourceTree = "<group>"; };
 		E10B5F881D46FE7C00175033 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		E10B5F8E1D484F6B00175033 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		E1520C711D4697BE00F9C72D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../Bolts.framework; sourceTree = "<group>"; };
 		E1520C721D4697BE00F9C72D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse.framework; sourceTree = "<group>"; };
 		E1520C731D4697BE00F9C72D /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = ../ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -374,6 +377,7 @@
 		62C8C1E21B06BD6500DC3EA7 /* Makestagram */ = {
 			isa = PBXGroup;
 			children = (
+				E10B5F8C1D484F4700175033 /* Views */,
 				E10B5F871D46FE6200175033 /* Models */,
 				E10B5F7D1D46E26900175033 /* PhotoTaking */,
 				6277189C1B0A58E800AF5C6E /* Helpers */,
@@ -427,6 +431,22 @@
 				E10B5F881D46FE7C00175033 /* Post.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		E10B5F8C1D484F4700175033 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E10B5F8D1D484F4F00175033 /* Timeline */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E10B5F8D1D484F4F00175033 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				E10B5F8E1D484F6B00175033 /* PostTableViewCell.swift */,
+			);
+			name = Timeline;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -621,6 +641,7 @@
 				62C8C1E61B06BD6500DC3EA7 /* AppDelegate.swift in Sources */,
 				E10B5F851D46E2CB00175033 /* PhototakingHelper.swift in Sources */,
 				627718971B0A581700AF5C6E /* FilterViewController.swift in Sources */,
+				E10B5F8F1D484F6B00175033 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +649,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E10B5F901D484F6B00175033 /* PostTableViewCell.swift in Sources */,
 				E1E11A8D1D46AD030084CFC9 /* FriendSearchViewController.swift in Sources */,
 				62C8C1FC1B06BD6500DC3EA7 /* MakestagramTests.swift in Sources */,
 				E1E11A841D46ABD80084CFC9 /* TimeLineViewController.swift in Sources */,

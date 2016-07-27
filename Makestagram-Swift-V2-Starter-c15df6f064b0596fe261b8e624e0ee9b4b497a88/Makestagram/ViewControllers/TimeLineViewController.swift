@@ -17,7 +17,7 @@ class TimeLineViewController: UIViewController {
             }
     
     
-    func takePhoto() {
+    func takePhoto(){
 
         photoTakingHelper = PhotoTakingHelper(viewController: self.tabBarController!, callback: { (image: UIImage?) in
             let post = Post()
@@ -58,14 +58,30 @@ class TimeLineViewController: UIViewController {
         // 7
         
         query.findObjectsInBackgroundWithBlock {(result: [PFObject]?, error: NSError?) -> Void in
-            // 8
             self.posts = result as? [Post] ?? []
-            // 9
+            
+            // 1
+            for post in self.posts {
+               
+                do {
+                // 2
+                let data = try post.imageFile?.getData()
+                    
+                post.image = UIImage(data: data!, scale:1.0)
+                    
+                }
+                
+                catch _ {}
+                
+            }
+            
             self.tableView.reloadData()
         }
     }
-}
+    
+    
 
+}
 
 
 // MARK: Tab Bar Delegate
@@ -96,14 +112,14 @@ extension TimeLineViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // 2
-        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell")!
+        // 1
+        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
         
-        cell.textLabel!.text = "Post"
+        // 2
+        cell.postImageView.image = posts[indexPath.row].image
         
         return cell
     }
-    
 }
 
 
