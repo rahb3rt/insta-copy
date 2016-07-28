@@ -1,5 +1,6 @@
 import UIKit
 import Bond
+import Parse
 
 
 
@@ -25,11 +26,13 @@ class PostTableViewCell: UITableViewCell {
         // 1
         if (post!.image.value == nil) {
             // 2
-            imageView.getDataInBackground { (data: NSData?, error: NSError?) -> Void in
+            post!.imageFile!.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+                
                 if let data = data {
+                    
                     let image = UIImage(data: data, scale:1.0)!
                     // 3
-                    self.image.value = image
+                    self.post!.image.value = image
                 }
             }
         }

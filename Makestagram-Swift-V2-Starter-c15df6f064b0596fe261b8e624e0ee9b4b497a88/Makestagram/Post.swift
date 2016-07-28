@@ -38,6 +38,7 @@ class Post : PFObject, PFSubclassing {
     
     // 3
     static func parseClassName() -> String {
+    
         return "Post"
     }
     
