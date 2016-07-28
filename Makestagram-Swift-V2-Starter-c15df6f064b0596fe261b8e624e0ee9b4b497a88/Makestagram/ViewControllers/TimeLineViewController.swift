@@ -1,5 +1,6 @@
 import UIKit
 import Parse
+import Bond
 
 var photoTakingHelper: PhotoTakingHelper?
 
@@ -19,66 +20,27 @@ class TimeLineViewController: UIViewController {
     
     func takePhoto(){
 
-        photoTakingHelper = PhotoTakingHelper(viewController: self.tabBarController!, callback: { (image: UIImage?) in
-            let post = Post()
-            post.image = image
-            post.uploadPost()
-            
-        })
-    }
+        func takePhoto() {
+            // instantiate photo taking class, provide callback for when photo is selected
+            photoTakingHelper =
+                PhotoTakingHelper(viewController: self.tabBarController!) { (image: UIImage?) in
+                    let post = Post()
+                    // 1
+                    post.image.value = image!
+                    post.uploadPost()
+            }
+        }    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        // 1
-        let followingQuery = PFQuery(className: "Follow")
-        
-        followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
-        
-        // 2
-        let postsFromFollowedUsers = Post.query()
-        
-        postsFromFollowedUsers!.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
-        
-        // 3
-        let postsFromThisUser = Post.query()
-        
-        postsFromThisUser!.whereKey("user", equalTo: PFUser.currentUser()!)
-        
-        // 4
-        let query = PFQuery.orQueryWithSubqueries([postsFromFollowedUsers!, postsFromThisUser!])
-        
-        // 5
-        query.includeKey("user")
-        
-        // 6
-        query.orderByDescending("createdAt")
-        
-        
-        // 7
-        
-        query.findObjectsInBackgroundWithBlock {(result: [PFObject]?, error: NSError?) -> Void in
+        ParseHelper.timelineRequestForCurrentUser {
+            (result: [PFObject]?, error: NSError?) -> Void in
             self.posts = result as? [Post] ?? []
-            
-            // 1
-            for post in self.posts {
-               
-                do {
-                // 2
-                let data = try post.imageFile?.getData()
-                    
-                post.image = UIImage(data: data!, scale:1.0)
-                    
-                }
-                
-                catch _ {}
-                
-            }
             
             self.tableView.reloadData()
         }
-    }
-    
+    }    
     
 
 }
@@ -112,13 +74,15 @@ extension TimeLineViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // 1
-        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
-        
-        // 2
-        cell.postImageView.image = posts[indexPath.row].image
-        
-        return cell
+    let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
+    
+    let post = posts[indexPath.row]
+    // 1
+    cell.downloadImage()
+    // 2
+    cell.post = post
+    
+    return cell
     }
 }
 
