@@ -65,6 +65,7 @@
 		E1E11A871D46ABED0084CFC9 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E11A851D46ABED0084CFC9 /* PhotoViewController.swift */; };
 		E1E11A8C1D46AD030084CFC9 /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E11A8B1D46AD030084CFC9 /* FriendSearchViewController.swift */; };
 		E1E11A8D1D46AD030084CFC9 /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E11A8B1D46AD030084CFC9 /* FriendSearchViewController.swift */; };
+		E1FC18CF1D49926F00860D53 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC18CE1D49926F00860D53 /* ParseHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +213,7 @@
 		E1E11A821D46ABD80084CFC9 /* TimeLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
 		E1E11A851D46ABED0084CFC9 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoViewController.swift; path = FilterViewController/PhotoViewController.swift; sourceTree = "<group>"; };
 		E1E11A8B1D46AD030084CFC9 /* FriendSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
+		E1FC18CE1D49926F00860D53 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +341,7 @@
 			children = (
 				6277189D1B0A58E800AF5C6E /* ErrorHandling.swift */,
 				6277189E1B0A58E800AF5C6E /* ParseLoginHelper.swift */,
+				E1FC18CE1D49926F00860D53 /* ParseHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				62C8C1E61B06BD6500DC3EA7 /* AppDelegate.swift in Sources */,
 				E10B5F851D46E2CB00175033 /* PhototakingHelper.swift in Sources */,
 				627718971B0A581700AF5C6E /* FilterViewController.swift in Sources */,
+				E1FC18CF1D49926F00860D53 /* ParseHelper.swift in Sources */,
 				E10B5F8F1D484F6B00175033 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
