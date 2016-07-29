@@ -4,6 +4,29 @@ import Bond
 
 var photoTakingHelper: PhotoTakingHelper?
 
+public class ParseHelper {
+    
+    // 2
+    public static func timelineRequestForCurrentUser(completionBlock: PFQueryArrayResultBlock) {
+        let followingQuery = PFQuery(className: "Follow")
+        followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
+        
+        let postsFromFollowedUsers = Post.query()
+        postsFromFollowedUsers!.whereKey("user", matchesKey: "toUser", inQuery: followingQuery)
+        
+        let postsFromThisUser = Post.query()
+        postsFromThisUser!.whereKey("user", equalTo: PFUser.currentUser()!)
+        
+        let query = PFQuery.orQueryWithSubqueries([postsFromFollowedUsers!, postsFromThisUser!])
+        query.includeKey("user")
+        query.orderByDescending("createdAt")
+        
+        // 3
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+}
+
 class TimeLineViewController: UIViewController {
     
     var posts: [Post] = []
@@ -34,8 +57,9 @@ class TimeLineViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        ParseHelper.timelineRequestForCurrentUser {
+        ParseHelper.timelineRequestForCurrentUser{
             (result: [PFObject]?, error: NSError?) -> Void in
+            
             self.posts = result as? [Post] ?? []
             
             self.tableView.reloadData()

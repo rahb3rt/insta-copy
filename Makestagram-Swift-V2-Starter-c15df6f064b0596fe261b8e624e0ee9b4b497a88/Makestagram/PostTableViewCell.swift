@@ -24,9 +24,9 @@ class PostTableViewCell: UITableViewCell {
     func downloadImage() {
         // if image is not downloaded yet, get it
         // 1
-        if (post!.image.value == nil) {
+        if (post?.image.value == nil) {
             // 2
-            post!.imageFile!.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+            post?.imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
                 
                 if let data = data {
                     
