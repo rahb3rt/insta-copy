@@ -10,7 +10,7 @@ class PostTableViewCell: UITableViewCell {
     
     
 
-    var post: Post? {
+    var post: Post! {
         didSet {
             // 1
             if let post = post {
@@ -24,9 +24,11 @@ class PostTableViewCell: UITableViewCell {
     func downloadImage() {
         // if image is not downloaded yet, get it
         // 1
-        if (post?.image.value == nil) {
+        dispatch_async(dispatch_get_main_queue()){
+            
+        if (self.post?.image.value == nil) {
             // 2
-            post?.imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+            self.post?.imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
                 
                 if let data = data {
                     
@@ -36,6 +38,7 @@ class PostTableViewCell: UITableViewCell {
                 }
             }
         }
+    }
     }
     
 }

@@ -39,9 +39,6 @@ class TimeLineViewController: UIViewController {
         
         
             }
-    
-    
-    
 
         func takePhoto() {
             // instantiate photo taking class, provide callback for when photo is selected
@@ -53,6 +50,7 @@ class TimeLineViewController: UIViewController {
                     post.uploadPost()
             }
         }
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
