@@ -18,8 +18,7 @@ class PostTableViewCell: UITableViewCell {
     @IBAction func moreButtonTapped(sender: AnyObject) {
         
     }
-    //@IBAction func moreButtonTapped(sender: AnyObject) {
-    //}
+
     @IBAction func likeButtonTapped(sender: AnyObject) {
         post?.toggleLikePost(PFUser.currentUser()!)
     }
