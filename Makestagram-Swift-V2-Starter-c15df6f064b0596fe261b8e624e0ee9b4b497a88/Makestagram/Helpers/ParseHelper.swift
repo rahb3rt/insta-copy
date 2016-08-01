@@ -1,6 +1,7 @@
 import Parse
+import UIKit
 
-public class ParseHelper {
+public class ParseHelper: NSObject {
     
     
     // Following Relation
@@ -27,7 +28,7 @@ public class ParseHelper {
     
     
     // 2
-    static func timelineRequestForCurrentUser(completionBlock: PFQueryArrayResultBlock) {
+    static func timelineRequestForCurrentUser(range: Range<Int>, completionBlock: PFQueryArrayResultBlock) {
         let followingQuery = PFQuery(className: ParseFollowClass)
         followingQuery.whereKey(ParseLikeFromUser, equalTo:PFUser.currentUser()!)
         
@@ -40,6 +41,11 @@ public class ParseHelper {
         let query = PFQuery.orQueryWithSubqueries([postsFromFollowedUsers!, postsFromThisUser!])
         query.includeKey(ParsePostUser)
         query.orderByDescending(ParsePostCreatedAt)
+        
+        // 2
+        query.skip = range.startIndex
+        // 3
+        query.limit = range.endIndex - range.startIndex
         
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
@@ -76,4 +82,18 @@ public class ParseHelper {
         
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
+    
+    
 }
+
+/*extension PFObject {
+    
+    public override func isEqual(object: AnyObject?) -> Bool {
+        if (object as? PFObject)?.objectId == self.objectId {
+            return true
+        } else {
+            return super.isEqual(object)
+        }
+    }
+    
+}*/

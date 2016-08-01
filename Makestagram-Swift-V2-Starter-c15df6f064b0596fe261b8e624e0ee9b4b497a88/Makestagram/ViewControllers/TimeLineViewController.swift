@@ -5,7 +5,10 @@ import ConvenienceKit
 
 var photoTakingHelper: PhotoTakingHelper?
 
-class TimeLineViewController: UIViewController {
+
+
+class TimeLineViewController: UIViewController, TimelineComponentTarget {
+    
     
     var timelineComponent: TimelineComponent<Post, TimeLineViewController>!
     var posts: [Post] = []
@@ -82,13 +85,22 @@ extension TimeLineViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
         
-        let post = posts[indexPath.row]
+        let post = timelineComponent.content[indexPath.row]
         cell.downloadImage()
         post.fetchLikes()
         cell.post = post
         
         return cell
     }
+}
+
+extension TimeLineViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        timelineComponent.targetWillDisplayEntry(indexPath.row)
+    }
+    
 }
 
 

@@ -14,6 +14,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
+
     
     @IBAction func moreButtonTapped(sender: AnyObject) {
         
@@ -24,8 +25,7 @@ class PostTableViewCell: UITableViewCell {
         post?.toggleLikePost(PFUser.currentUser()!)
     }
     
-    var postDisposable: DisposableType?
-    var likeDisposable: DisposableType?
+
     
 
     var post: Post? {
