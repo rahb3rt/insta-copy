@@ -65,7 +65,7 @@
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="388" id="ICu-Zu-5E8" customClass="PostTableViewCell" customModule="Makestagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="496" height="388"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ICu-Zu-5E8" id="Li2-My-nZh">
                                             <rect key="frame" x="0.0" y="0.0" width="496" height="387.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -73,26 +73,37 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jve-DP-jMa">
                                                     <rect key="frame" x="8" y="13" width="378" height="248.5"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bua-40-1ZA">
-                                                    <rect key="frame" x="365" y="347" width="21" height="18"/>
-                                                    <state key="normal" image="Heart"/>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5O-gU-Y56">
                                                     <rect key="frame" x="8" y="345" width="26" height="20"/>
                                                     <state key="normal" image="More"/>
+                                                    <connections>
+                                                        <action selector="moreButtonTapped:" destination="ICu-Zu-5E8" eventType="touchUpInside" id="azB-5f-PhL"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Heart" translatesAutoresizingMaskIntoConstraints="NO" id="8yL-bn-6Eh">
-                                                    <rect key="frame" x="8" y="278" width="20" height="20"/>
+                                                    <rect key="frame" x="8" y="317" width="20" height="20"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2T-dY-37u">
-                                                    <rect key="frame" x="36" y="277" width="74" height="21"/>
+                                                    <rect key="frame" x="36" y="317" width="74" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bua-40-1ZA">
+                                                    <rect key="frame" x="311" y="340" width="21" height="18"/>
+                                                    <state key="normal" image="Heart"/>
+                                                    <state key="selected" image="Heart-Selected"/>
+                                                    <connections>
+                                                        <action selector="likeButtonTapped:" destination="ICu-Zu-5E8" eventType="touchUpInside" id="mNU-Ik-ucZ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="likeButton" destination="8yL-bn-6Eh" id="Vq3-PK-b0w"/>
+                                            <outlet property="likesIconImageView" destination="Li2-My-nZh" id="f6E-Tn-8NS"/>
+                                            <outlet property="likesLabel" destination="Y2T-dY-37u" id="t1o-xX-Kq9"/>
+                                            <outlet property="moreButton" destination="Li2-My-nZh" id="411-Lo-O4y"/>
                                             <outlet property="postImageView" destination="jve-DP-jMa" id="zSA-rx-oqf"/>
                                         </connections>
                                     </tableViewCell>
@@ -142,6 +153,7 @@
     <resources>
         <image name="Camera" width="40" height="30"/>
         <image name="Heart" width="72" height="68"/>
+        <image name="Heart-Selected" width="72" height="68"/>
         <image name="Home" width="38" height="36"/>
         <image name="More" width="26" height="17"/>
         <image name="People" width="42" height="42"/>

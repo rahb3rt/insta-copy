@@ -7,7 +7,19 @@ import Parse
 class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var likesIconImageView: UIView!
+    @IBOutlet weak var moreButton: UIView!
+    @IBOutlet weak var likeButton: UIImageView!
+    @IBOutlet weak var likesLabel: UILabel!
     
+    @IBAction func moreButtonTapped(sender: AnyObject) {
+        
+    }
+    //@IBAction func moreButtonTapped(sender: AnyObject) {
+    //}
+    @IBAction func likeButtonTapped(sender: AnyObject) {
+        post?.toggleLikePost(PFUser.currentUser()!)
+    }
     
 
     var post: Post! {
