@@ -1,23 +1,25 @@
 import UIKit
 import Parse
 import Bond
+import ConvenienceKit
 
 var photoTakingHelper: PhotoTakingHelper?
 
 class TimeLineViewController: UIViewController {
     
+    var timelineComponent: TimelineComponent<Post, TimeLineViewController>!
     var posts: [Post] = []
     
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        timelineComponent = TimelineComponent(target: self)
         self.tabBarController?.delegate = self
-        
-        
-            }
-
-        func takePhoto() {
+    }
+    
+    func takePhoto() {
             // instantiate photo taking class, provide callback for when photo is selected
             photoTakingHelper =
                 PhotoTakingHelper(viewController: self.tabBarController!) { (image: UIImage?) in
@@ -28,20 +30,26 @@ class TimeLineViewController: UIViewController {
             }
         }
     
+    let defaultRange = 0...4
+    let additionalRangeSize = 5
+    
+    func loadInRange(range: Range<Int>, completionBlock: ([Post]?) -> Void) {
+        // 1
+        ParseHelper.timelineRequestForCurrentUser(range) {
+            (result: [PFObject]?, error: NSError?) -> Void in
+            // 2
+            let posts = result as? [Post] ?? []
+            // 3
+            completionBlock(posts)
+        }
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        ParseHelper.timelineRequestForCurrentUser{
-            (result: [PFObject]?, error: NSError?) -> Void in
-            
-            self.posts = result as? [Post] ?? []
-            
-            self.tableView.reloadData()
-        }
-    }    
+        timelineComponent.loadInitialIfRequired()
+    }
     
-
 }
 
 
@@ -68,8 +76,7 @@ extension TimeLineViewController: UITabBarControllerDelegate {
 extension TimeLineViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 1
-        return posts.count
+        return timelineComponent.content.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

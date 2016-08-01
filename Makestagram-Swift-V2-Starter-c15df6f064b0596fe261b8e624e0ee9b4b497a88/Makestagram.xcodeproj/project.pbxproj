@@ -659,6 +659,7 @@
 				E10B5F901D484F6B00175033 /* PostTableViewCell.swift in Sources */,
 				E1E11A8D1D46AD030084CFC9 /* FriendSearchViewController.swift in Sources */,
 				62C8C1FC1B06BD6500DC3EA7 /* MakestagramTests.swift in Sources */,
+				E1FC18E21D4FC1E100860D53 /* AppDelegate.swift in Sources */,
 				E1E11A841D46ABD80084CFC9 /* TimeLineViewController.swift in Sources */,
 				E10B5F8A1D46FE7C00175033 /* Post.swift in Sources */,
 				E10B5F861D46E2CB00175033 /* PhototakingHelper.swift in Sources */,

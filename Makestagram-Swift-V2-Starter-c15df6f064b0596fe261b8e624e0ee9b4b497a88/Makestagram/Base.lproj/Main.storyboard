@@ -89,8 +89,9 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bua-40-1ZA">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bua-40-1ZA">
                                                     <rect key="frame" x="311" y="340" width="21" height="18"/>
+                                                    <inset key="contentEdgeInsets" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" image="Heart"/>
                                                     <state key="selected" image="Heart-Selected"/>
                                                     <connections>
@@ -110,6 +111,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="SfZ-p7-tfr" id="x9g-bl-gRr"/>
+                                    <outlet property="delegate" destination="SfZ-p7-tfr" id="lA2-u8-tz2"/>
                                 </connections>
                             </tableView>
                         </subviews>

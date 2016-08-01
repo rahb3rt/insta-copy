@@ -6,6 +6,9 @@ import Parse
 
 class PostTableViewCell: UITableViewCell {
     
+    var postDisposable: DisposableType?
+    var likeDisposable: DisposableType?
+    
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var likesIconImageView: UIView!
     @IBOutlet weak var likesLabel: UILabel!
