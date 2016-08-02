@@ -59,12 +59,16 @@ class PostTableViewCell: UITableViewCell {
     
         func downloadImage() {
         // 1
-        post?.image.value = Post.imageCache[(self.post?.imageFile!.name)!]
+        
+            dispatch_async(dispatch_get_main_queue()){
+                
+            
+        self.post?.image.value = Post.imageCache[(self.post?.imageFile!.name)!]
         
         // if image is not downloaded yet, get it
-        if (post?.image.value == nil) {
+        if (self.post?.image.value == nil) {
         
-        post?.imageFile!.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+        self.post?.imageFile!.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
         if let data = data {
         let image = UIImage(data: data, scale:1.0)!
         self.post!.image.value = image
@@ -74,6 +78,7 @@ class PostTableViewCell: UITableViewCell {
                 }
             }
         }
+    }
     
     func stringFromUserList(userList: [PFUser]) -> String {
         // 1
