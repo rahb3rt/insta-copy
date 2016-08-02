@@ -38,6 +38,10 @@ extension ParseLoginHelper : PFLogInViewControllerDelegate {
     // Determine if this is a Facebook login
 
    }
+    
+  func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
+        self.callback(user, nil)
+    }
 
 }
 

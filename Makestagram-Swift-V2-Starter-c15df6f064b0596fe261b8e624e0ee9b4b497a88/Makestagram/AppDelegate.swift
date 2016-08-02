@@ -8,6 +8,7 @@
 import UIKit
 import Parse
 import Bolts
+import ParseUI
 
 
 @UIApplicationMain
@@ -15,7 +16,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-
+    var parseLoginHelper: ParseLoginHelper!
+    
+    override init() {
+        super.init()
+        
+        parseLoginHelper = ParseLoginHelper {[unowned self] user, error in
+            // Initialize the ParseLoginHelper with a callback
+            if let error = error {
+                // 1
+                ErrorHandling.defaultErrorHandler(error)
+            } else  if let _ = user {
+                // if login was successful, display the TabBarController
+                // 2
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
+                // 3
+                self.window?.rootViewController!.presentViewController(tabBarController, animated:true, completion:nil)
+            }
+        }
+    }
+    
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
     let config = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
@@ -27,25 +48,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     Parse.initializeWithConfiguration(config)
     
-        do {
-            try PFUser.logInWithUsername("test", password: "test")
-        }
-        catch _ {
-            // Error handling
-        }
+    // check if we have logged in user
+    // 2
+    let user = PFUser.currentUser()
+    
+    let startViewController: UIViewController;
+    
+    if (user != nil) {
+        // 3
+        // if we have a user, set the TabBarController to be the initial view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        startViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+    } else {
+        // 4
+        // Otherwise set the LoginViewController to be the first
+        let loginViewController = PFLogInViewController()
+        loginViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton, .PasswordForgotten]
+        loginViewController.delegate = parseLoginHelper
+        //loginViewController.signUpController?.delegate = parseLoginHelper
         
-        if (PFUser.currentUser() != nil) {
-            
-          
-            return true
-            
-        }
+        startViewController = loginViewController
+    }
     
-        let acl = PFACL()
-        acl.setReadAccess(true, forRoleWithName: "everyone")
-        acl.setWriteAccess(true, forRoleWithName: "everyone")
+    // 5
+    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    self.window?.rootViewController = startViewController;
+    self.window?.makeKeyAndVisible()
     
-        return false
+    return true
     }
 
 

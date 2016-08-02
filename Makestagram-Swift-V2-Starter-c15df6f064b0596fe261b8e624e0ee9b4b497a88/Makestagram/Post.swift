@@ -1,6 +1,7 @@
 import Foundation
 import Parse
 import Bond
+import ConvenienceKit
 
 
 class Post : PFObject, PFSubclassing {
@@ -8,6 +9,8 @@ class Post : PFObject, PFSubclassing {
     var image: Observable<UIImage?> = Observable(nil)
     var photoUploadTask: UIBackgroundTaskIdentifier?
     var likes: Observable<[PFUser]?> = Observable(nil)
+    static var imageCache: NSCacheSwift<String, UIImage>!
+    
     
     func fetchLikes() {
         // 1
@@ -97,6 +100,8 @@ class Post : PFObject, PFSubclassing {
         dispatch_once(&onceToken) {
             // inform Parse about this subclass
             self.registerSubclass()
+            // 1
+            Post.imageCache = NSCacheSwift<String, UIImage>()
         }
     }
     

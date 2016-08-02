@@ -28,26 +28,26 @@ class PostTableViewCell: UITableViewCell {
 
     
 
-    var post: Post? {
+    var post:Post? {
         didSet {
-            // 1
+            
             postDisposable?.dispose()
             likeDisposable?.dispose()
+            // free memory of image stored with post that is no longer displayed
+            // 1
+            if let oldValue = oldValue where oldValue != post {
+                oldValue.image.value = nil
+            }
             
             if let post = post {
-                // 2
                 postDisposable = post.image.bindTo(postImageView.bnd_image)
+                
                 likeDisposable = post.likes.observe { (value: [PFUser]?) -> () in
-                    // 3
                     if let value = value {
-                        // 4
                         self.likesLabel.text = self.stringFromUserList(value)
-                        // 5
                         self.likeButton.selected = value.contains(PFUser.currentUser()!)
-                        // 6
                         //self.likesIconImageView.hidden = (value.count == 0)
                     } else {
-                        // 7
                         self.likesLabel.text = ""
                         self.likeButton.selected = false
                         //self.likesIconImageView.hidden = true
@@ -55,32 +55,31 @@ class PostTableViewCell: UITableViewCell {
                 }
             }
         }
-    }    
-    func downloadImage() {
-        // if image is not downloaded yet, get it
+    }
+    
+        func downloadImage() {
         // 1
-        dispatch_async(dispatch_get_main_queue()){
-            
-        if (self.post?.image.value == nil) {
-            // 2
-            self.post?.imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
-                
-                if let data = data {
-                    
-                    let image = UIImage(data: data, scale:1.0)!
-                    // 3
-                    self.post!.image.value = image
+        post?.image.value = Post.imageCache[(self.post?.imageFile!.name)!]
+        
+        // if image is not downloaded yet, get it
+        if (post?.image.value == nil) {
+        
+        post?.imageFile!.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+        if let data = data {
+        let image = UIImage(data: data, scale:1.0)!
+        self.post!.image.value = image
+        // 2
+        Post.imageCache[(self.post?.imageFile!.name)!] = image
+                    }
                 }
             }
         }
-    }
-}
     
     func stringFromUserList(userList: [PFUser]) -> String {
         // 1
         let usernameList = userList.map { user in user.username! }
         // 2
-        let commaSeparatedUserList = usernameList.joinWithSeparator(", ")
+        let commaSeparatedUserList = usernameList.joinWithSeparator(",")
         
         return commaSeparatedUserList
     }

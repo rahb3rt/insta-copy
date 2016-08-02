@@ -58,6 +58,8 @@
 		E1520CE91D469BAD00F9C72D /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1520CDE1D469BAD00F9C72D /* ParseTwitterUtils.framework */; };
 		E1520CEA1D469BAD00F9C72D /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1520CDF1D469BAD00F9C72D /* ParseUI.framework */; };
 		E1520CEB1D469BAD00F9C72D /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1520CDF1D469BAD00F9C72D /* ParseUI.framework */; };
+		E188CC7E1D51232000FE135C /* ParseLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6277189E1B0A58E800AF5C6E /* ParseLoginHelper.swift */; };
+		E188CC7F1D5123A200FE135C /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6277189D1B0A58E800AF5C6E /* ErrorHandling.swift */; };
 		E1E11A831D46ABD80084CFC9 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E11A821D46ABD80084CFC9 /* TimeLineViewController.swift */; };
 		E1E11A841D46ABD80084CFC9 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E11A821D46ABD80084CFC9 /* TimeLineViewController.swift */; };
 		E1E11A861D46ABED0084CFC9 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E11A851D46ABED0084CFC9 /* PhotoViewController.swift */; };
@@ -679,7 +681,9 @@
 				E10B5F8A1D46FE7C00175033 /* Post.swift in Sources */,
 				E10B5F861D46E2CB00175033 /* PhototakingHelper.swift in Sources */,
 				E1E11A871D46ABED0084CFC9 /* PhotoViewController.swift in Sources */,
+				E188CC7F1D5123A200FE135C /* ErrorHandling.swift in Sources */,
 				E1FC18E11D4FC19B00860D53 /* ParseHelper.swift in Sources */,
+				E188CC7E1D51232000FE135C /* ParseLoginHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,11 +826,12 @@
 				INFOPLIST_FILE = Makestagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "Make-School.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = Quarx.Makestagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Makestagram/Makestagram-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -845,10 +850,11 @@
 				INFOPLIST_FILE = Makestagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "Make-School.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = Quarx.Makestagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Makestagram/Makestagram-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
